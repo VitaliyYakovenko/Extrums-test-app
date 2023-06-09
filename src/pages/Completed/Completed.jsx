@@ -14,10 +14,14 @@ export default function Completed() {
 
    return (
       <div>
-      <h1>Completed challanges</h1>  
-      <CompletedTable
+      <h1>Completed challanges</h1>
+      {completedIdeas.length === 0
+      ?  <p>no ideas at the moment</p>
+      :  <CompletedTable
       completedIdeas={completedIdeas}
-      />
+      />    
+      } 
+     
       </div>
    )
 };

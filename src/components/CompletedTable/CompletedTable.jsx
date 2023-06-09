@@ -3,7 +3,7 @@
 
 
 export default function CompletedTable({ completedIdeas }) {
-    console.log(completedIdeas);
+
 
     return (<table>
         <thead>
