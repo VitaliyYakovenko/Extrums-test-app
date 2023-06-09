@@ -1,0 +1,14 @@
+
+
+.ideaItem {
+    text-align: center;
+    width: 200px;
+    height: 100px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border: 1px solid black;
+}
+
+.ideaAction {
+    border-bottom: 1px solid black;
+}
