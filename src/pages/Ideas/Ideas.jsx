@@ -18,6 +18,7 @@ export default function Ideas() {
      const visibleIdeas = ideas.filter(idea => idea.status === "wait");
 
      return (<div>
+          <h1>Choose fresh ideas to do</h1>
           {
           visibleIdeas.length === 0
           ? <p>visibleIdeas dont have any ideas</p>
