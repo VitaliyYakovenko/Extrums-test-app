@@ -7,7 +7,7 @@ export default function Completed() {
    const [ideas, setIdeas] = useState([]);
 
    useEffect(() => { 
-      getAllIdeas().then(resp => setIdeas(resp));
+      getAllIdeas().then(resp => setIdeas(resp.data));
    }, []);
   
    const completedIdeas = ideas.filter(idea => idea.done);

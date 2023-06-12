@@ -1,5 +1,4 @@
-
-
+import PropTypes from 'prop-types'
 
 export default function AchievementsList({visibleAch}) {
 
@@ -14,7 +13,7 @@ export default function AchievementsList({visibleAch}) {
     }, {});
     
    
-    const { Education,
+    const { Education = 0,
         Busywork = 0,
         Relaxation = 0,
         Music = 0,
@@ -32,4 +31,17 @@ export default function AchievementsList({visibleAch}) {
         <p>Recreational: {Recreational}</p> 
     </div>);
 
+};
+
+AchievementsList.propTypes = {
+    visibleAchL: PropTypes.arrayOf(
+         PropTypes.shape({
+            _id: PropTypes.string.isRequired,
+            action: PropTypes.string.isRequired,
+            date: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
+            done: PropTypes.bool.isRequired,
+            theme: PropTypes.string.isRequired,
+            status: PropTypes.string.isRequired
+         })
+   )
 };

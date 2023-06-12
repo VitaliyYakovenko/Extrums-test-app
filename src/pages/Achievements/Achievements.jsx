@@ -7,7 +7,7 @@ export default function Achievements() {
    const [ideas, setIdeas] = useState([]);
  
    useEffect(() => { 
-      getAllIdeas().then(resp => setIdeas(resp));
+      getAllIdeas().then(resp => setIdeas(resp.data));
 
    }, []);
 

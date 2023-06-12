@@ -10,17 +10,17 @@ export default function Home() {
 
 
     useEffect(() => { 
-       getAllIdeas().then(resp => setIdeas(resp));
+       getAllIdeas().then(resp => setIdeas(resp.data));
      }, []);
  
       const getIdeasById = (id) => {
       const currentDate = new Date();
       const unixTime = Math.floor(currentDate.getTime() / 1000);  
       const time = formatUnixTime(unixTime);
-      doneIdeaById(id, time);
+      doneIdeaById (id, time);
     
-      setIdeas(ideas.filter(idea => idea.id !== id));
-  };
+      setIdeas(ideas.filter(idea => idea._id !== id));
+     };
 
   const visibleIdeas = ideas.filter(idea => idea.status === "selected" && !idea.done);
   return (

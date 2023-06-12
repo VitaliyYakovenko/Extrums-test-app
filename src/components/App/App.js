@@ -13,7 +13,7 @@ export default function App() {
 
 
   return (
-  // <Context>  
+
     <Routes>
         <Route path="/" element={<Loayout/>}>
           <Route index element={<Home />}/>
@@ -23,7 +23,7 @@ export default function App() {
           <Route path="*" element={<NotFound/>}/>
         </Route>
     </Routes>
-  // </Context>    
+
   );
 }
 
