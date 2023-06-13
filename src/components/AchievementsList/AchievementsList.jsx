@@ -1,4 +1,14 @@
 import PropTypes from 'prop-types'
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableRow,
+    TableHead,
+} from '@mui/material';
+
+
 
 export default function AchievementsList({visibleAch}) {
 
@@ -11,27 +21,29 @@ export default function AchievementsList({visibleAch}) {
       }
       return acc;
     }, {});
-    
-   
-    const { Education = 0,
-        Busywork = 0,
-        Relaxation = 0,
-        Music = 0,
-        Social = 0,
-        Sport = 0,
-        Recreational = 0 } = countByTheme;
+        
+    const countByThemeArray = Object.entries(countByTheme).map(([theme, count]) => ({ theme, count }));
 
-    return (<div>
-        <p>Education: {Education}</p>
-        <p>Busywork: {Busywork}</p>
-        <p>Relaxation: {Relaxation}</p>
-        <p>Music: {Music}</p>
-        <p>Social:{Social}</p>
-        <p>Sport: {Sport}</p>
-        <p>Recreational: {Recreational}</p> 
-    </div>);
-
-};
+    return (<TableContainer>
+        <Table sx={{ maxWidth: 250 , margin: "auto"}} aria-label="simple table">
+            <TableHead>
+                <TableRow>
+                <TableCell align="left">Theme</TableCell>
+                <TableCell align="right">Quantity</TableCell>
+                </TableRow>    
+            </TableHead>
+            <TableBody >
+                {countByThemeArray.map(count => (
+                    <TableRow key={count.theme}>
+                 <TableCell  scope="row" align="left">{count.theme}</TableCell>
+                 <TableCell  scope="row" align="right">{count.count}</TableCell>   
+                   </TableRow> 
+                ))}
+            </TableBody>
+        </Table>
+    </TableContainer>
+ 
+)};
 
 AchievementsList.propTypes = {
     visibleAchL: PropTypes.arrayOf(
@@ -45,3 +57,5 @@ AchievementsList.propTypes = {
          })
    )
 };
+
+

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getAllIdeas } from "../../rest-api/getAllIdeas";
 import { updateStatusById } from "../../rest-api/updateStatusById";
 import IdeasList from "../../components/IdeasList/IdeasList";
+import { Typography, Button, Box } from '@mui/material';
+import css from "./Ideas.module.css";
 
 export default function Ideas() {
      const [ideas, setIdeas] = useState([]);
@@ -9,7 +11,7 @@ export default function Ideas() {
      const [page, setPage] = useState(1);
      const [total, setTotal] = useState(0);
      
-    
+     
      useEffect(() => {
           setStatus("loading")
           getAllIdeas().then(resp => {
@@ -19,9 +21,8 @@ export default function Ideas() {
           });
      }, []);
 
-     console.log(page);
-     useEffect(() => {
 
+     useEffect(() => {
           if (page > 1) {
                setStatus("loading")
                getAllIdeas(page).then(resp => {
@@ -30,37 +31,48 @@ export default function Ideas() {
                })
           }
      }
-          , [page]);
+    , [page]);
      
       
      const getCurrentIdea = (id) => {
           updateStatusById(id)
-          setIdeas(ideas.filter(idea => idea._id !== id));
+  
+          const updateIdea = ideas.map((idea) => {
+               if (idea._id === id) {
+              
+          return { ...idea, status: "selected" };
+          }
+          return idea;
+          });
+
+          setIdeas(updateIdea);
      };
-
-     const visibleIdeas = ideas.filter(idea => idea.status === "wait");
-
-     return (<div>
-
-          <h1>Choose fresh ideas to do</h1>
-          {
-          visibleIdeas.length === 0
-          ? <p>visibleIdeas dont have any ideas</p>
-          : <ul>
-               <IdeasList
-               ideas={visibleIdeas}
-               getCurrentIdea={getCurrentIdea}
-               />
+    
+     return (<Box m={2} className={css.ideasPage}>      
+          <Typography
+          component="h1"     
+          variant="h3"
+          mt={2}
+          mb={3}     
+          className={css.ideasTitle}>
+          Choose fresh ideas to do
+          </Typography>
+          <ul>
+          <IdeasList
+          getCurrentIdea={getCurrentIdea}
+          ideas={ideas}/>    
           </ul>
-          }
-          {total === ideas.length 
+    
+          {total === ideas.length
           ? <></> 
-          : <button onClick={() => setPage(prev => prev + 1)}>
+          : <Button 
+          variant="contained"
+          onClick={() => setPage(prev => prev + 1)}>
           {status === "loading"
-           ? <span>Loading...</span>
-           : <span>Load More</span>            
+           ? <span className={css.loadMoreBtnText}>Loading...</span>
+           : <span className={css.loadMoreBtnText}>Load More</span>            
           }          
-          </button>  
+          </Button>  
           }
-     </div>);
+          </Box>);
 };

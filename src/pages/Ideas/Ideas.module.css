@@ -1,0 +1,19 @@
+
+
+
+.ideasPage {
+    text-align: center;
+}
+
+.ideasTitle {
+    color: #007aff;
+    margin-bottom: 20px;
+}
+.ideasMessage {
+    color: red;
+}
+
+.loadMoreBtnText {
+   text-transform: none;
+   font-weight: 600;
+}

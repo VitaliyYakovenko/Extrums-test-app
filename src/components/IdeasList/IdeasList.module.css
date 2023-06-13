@@ -2,8 +2,8 @@
 
 .ideaItem {
     text-align: center;
-    width: 200px;
-    height: 100px;
+    width: 250px;
+    min-height: 250px;
     margin: 0 auto;
     margin-bottom: 30px;
     border: 1px solid black;
@@ -11,4 +11,16 @@
 
 .ideaAction {
     border-bottom: 1px solid black;
+}
+
+
+
+.getIdeaBtnText {
+    text-transform: none;
+}
+
+.getIdeaBtnTextSelected {
+    text-transform: none;
+    font-weight: 600;
+    color: rgb(151, 18, 18);
 }

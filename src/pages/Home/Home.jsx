@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { getAllIdeas } from "../../rest-api/getAllIdeas";
+import { getAllSelectedIdeas} from "../../rest-api/getAllSelectedIdeas";
 import {formatUnixTime} from "../../utils/convertUnixTime";
 import SelectedIdeas from "../../components/SelectedIdeas/SelectedIdeas";
 import { doneIdeaById } from "../../rest-api/doneIdeaById";
+import { Typography, Box } from "@mui/material";
+import { successMessageDone } from "../../utils/successMessageDone";
 import css from "./Home.module.css";
 
 export default function Home() {
@@ -10,28 +12,44 @@ export default function Home() {
 
 
     useEffect(() => { 
-       getAllIdeas().then(resp => setIdeas(resp.data));
+       getAllSelectedIdeas().then(resp => setIdeas(resp.data));
      }, []);
  
       const getIdeasById = (id) => {
       const currentDate = new Date();
       const unixTime = Math.floor(currentDate.getTime() / 1000);  
       const time = formatUnixTime(unixTime);
-      doneIdeaById (id, time);
-    
+      doneIdeaById(id, time);
+        
+      successMessageDone();
       setIdeas(ideas.filter(idea => idea._id !== id));
-     };
-
+    };
+     
+   
   const visibleIdeas = ideas.filter(idea => idea.status === "selected" && !idea.done);
   return (
-    <div className={css.homeContainer}>
-     <h1>Ideas in my list</h1>  
+    <Box>
+      <Typography
+      component="h1"  
+      variant="h3"
+      mt={2}
+      mb={3}
+      className={css.homeTitle}    
+      >
+      Ideas in my list
+      </Typography>  
     {visibleIdeas.length === 0
-    ? <p>Add some idea on Ideas page</p>
+    ? <Typography
+        component="p"
+        className={css.homeMessage}
+        variant="h5"
+        >
+        Add some idea on Ideas page
+        </Typography>
     : <ul className={css.ideasList}>
       <SelectedIdeas
       getIdeasById={getIdeasById}      
       ideas={visibleIdeas} />
     </ul> }
-  </div>)
+  </Box>)
 };

@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import PropTypes from 'prop-types'
+import {Card,CardContent, Typography , Button} from '@mui/material';
 import css from "./SelectedIdeas.module.css";
 
 
@@ -23,13 +24,35 @@ export default function SelectedIdeas({getIdeasById, ideas}) {
       >
         {ideas.map(idea => (
           <SwiperSlide key={idea._id}>
-            <li
+            <Card
               className={css.ideaItem}
               key={idea.id}>
-              <p className={css.ideaAction}>{idea.action}</p>
-              <p>{idea.theme}</p>
-              <button onClick={() => getIdeasById(idea._id)}>Idea sucsess</button>
-            </li>
+              <CardContent>
+                <Typography
+                variant='h4'
+                component="p"
+                mb={3}       
+                className={css.ideaAction}>
+                {idea.action}
+                </Typography>
+
+                <Typography
+                variant='h5'
+                style={{ fontWeight: 700}}        
+                component="p"        
+                mb={6}  
+                >
+                {idea.theme}
+                </Typography>
+                <Button
+                variant='contained'
+                onClick={() => getIdeasById(idea._id)}>
+                  <span className={css.getIdeaBtnText}>
+                   Idea sucsess
+                  </span>
+                </Button>
+            </CardContent>    
+            </Card>
           </SwiperSlide>
         ))}
       </Swiper>

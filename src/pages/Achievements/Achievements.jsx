@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getAllIdeas } from "../../rest-api/getAllIdeas";
+import { Typography} from "@mui/material";
+import { getAllSelectedIdeas} from "../../rest-api/getAllSelectedIdeas";
 import  AchievementsList  from "../../components/AchievementsList/AchievementsList";
 
 
@@ -7,7 +8,7 @@ export default function Achievements() {
    const [ideas, setIdeas] = useState([]);
  
    useEffect(() => { 
-      getAllIdeas().then(resp => setIdeas(resp.data));
+      getAllSelectedIdeas().then(resp => setIdeas(resp.data));
 
    }, []);
 
@@ -15,7 +16,12 @@ export default function Achievements() {
 
    return (
       <>
-      <h1>Achievements</h1>
+      <Typography
+      sx={{textAlign:"center"}}      
+      component="h1"  
+      variant="h3"
+      mt={2}
+      mb={4}>Achievements</Typography>
       <AchievementsList
       visibleAch={visibleAch} />
       </>

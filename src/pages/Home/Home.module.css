@@ -1,11 +1,18 @@
 
 
 
-.homeContainer {
-    width: 1280px;
-    margin: 0 auto;
+.homeTitle {
+    font-weight: 700;
+    text-align: center;
+    color: #007aff;
+    margin-bottom: 20px;
 }
 
+.homeMessage {
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+}
 
 .ideasList {
     padding-top: 100px;

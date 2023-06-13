@@ -1,20 +1,24 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
+import { Typography } from "@mui/material";
 import CompletedTable from "../../components/CompletedTable/CompletedTable";
-import { getAllIdeas } from "../../rest-api/getAllIdeas";
-
+import { getAllSelectedIdeas} from "../../rest-api/getAllSelectedIdeas";
 
 export default function Completed() {
    const [ideas, setIdeas] = useState([]);
 
    useEffect(() => { 
-      getAllIdeas().then(resp => setIdeas(resp.data));
+      getAllSelectedIdeas().then(resp => setIdeas(resp.data));
    }, []);
   
    const completedIdeas = ideas.filter(idea => idea.done);
 
    return (
-      <div>
-      <h1>Completed challanges</h1>
+      <>
+      <Typography
+      component="h1"  
+      variant="h3"
+      mt={2}
+      mb={3}>Completed challanges</Typography>
       {completedIdeas.length === 0
       ?  <p>no ideas at the moment</p>
       :  <CompletedTable
@@ -22,6 +26,6 @@ export default function Completed() {
       />    
       } 
      
-      </div>
+      </>
    )
 };

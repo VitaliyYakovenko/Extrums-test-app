@@ -1,0 +1,29 @@
+
+
+.navList {
+    display: flex;
+    align-items: baseline;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+.navLink {
+    font-weight: 600;
+    font-size: 18px;
+    padding: 20px;
+}
+
+
+.linkHome {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.loading {
+    margin: 0 auto;
+    text-align:  center;
+    font-size: 22px;
+    font-weight: 700;
+}

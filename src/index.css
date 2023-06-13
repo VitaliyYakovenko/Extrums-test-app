@@ -1,4 +1,4 @@
-
+@import-normalize;
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,6 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(231, 235, 240);
 }
 
 code {
@@ -13,10 +14,12 @@ code {
     monospace;
 }
 
-h1,h2,h3,p {
+h1,h2,h3,h4,h5,p {
   padding: 0;
   margin: 0;
+
 }
+
 
 ul, li {
   padding: 0;
@@ -25,3 +28,11 @@ ul, li {
 }
 
 
+a{ 
+  color: inherit;;
+  text-decoration: none;
+}
+
+.active {
+  color:  darkblue;
+}
