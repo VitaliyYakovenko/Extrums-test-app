@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
-// import Context from '../Context/Context';
 import Loayout from "../Loayout/Loayout";
 import Home from "../../pages/Home/Home";
 const Ideas = lazy(() => import("../../pages/Ideas/Ideas"));
